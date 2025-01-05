@@ -1,27 +1,58 @@
 # Pet360
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+Pet360 is a project generated with **Angular CLI version 14.1.0**. It is a comprehensive web application designed for managing pet-related services and information.
 
-## Development server
+## GitHub Repository
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The project's source code is hosted on GitHub. You can access the repository at the following link:
 
-## Code scaffolding
+[Pet360 GitHub Repository](https://github.com/Chandra1996/pet360)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Prerequisites
 
-## Build
+Before running the project, ensure you have the following installed:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Node.js**: This is required to run the Angular project.
+  - You can download it from [nodejs.org](https://nodejs.org/).
 
-## Running unit tests
+- **Angular CLI**: The project was generated using Angular CLI version 14.1.0.
+  - To install Angular CLI globally, run:
+    ```bash
+    npm install -g @angular/cli
+    ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Installation
 
-## Running end-to-end tests
+Follow these steps to clone the repository and install the necessary dependencies:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/Chandra1996/pet360.git
+    ```
 
-## Further help
+2. Navigate to the project folder:
+    ```bash
+    cd pet360
+    ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+3. Install the project dependencies using npm:
+    ```bash
+    npm install
+    ```
+
+## Running the Project
+
+To run the project locally, follow these steps:
+
+1. Navigate to the project directory (if not already there):
+    ```bash
+    cd pet360
+    ```
+
+2. Start the development server:
+    ```bash
+    ng serve
+    ```
+
+    This will build the project and serve it at `http://localhost:4200/`. Open your browser and visit this URL to see the app in action.
+
