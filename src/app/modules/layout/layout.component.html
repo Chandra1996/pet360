@@ -1,0 +1,47 @@
+<div class="main-container ">
+    <!-- Left Navigation -->
+    <nav class="left-nav">
+        <div class="nav-main-container">
+            <div>
+                <div class="logo-container">
+                    <span class="logo">
+                        <img src="../../../assets/logos/main.png" alt="">
+                        <!-- <mat-icon svgIcon="feather:consultations"></mat-icon> -->
+                    </span>
+                </div>
+                <div class="nav-container">
+                    <ul>
+                        <li (click)="onClickNav(item)" *ngFor="let item of menuItems"
+                            [class.active]="item.label === selectedNavItem">
+                            <span>
+                                <mat-icon class="icon" svgIcon="feather:{{item.icon}}"></mat-icon>
+                            </span>
+                            <span class="nav-label"> {{ item.label }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer-text">
+                    <span class="plan">Paws Elite Plan</span>
+                    <span class="expiry">Expiring 31 Aug '24</span>
+                </div>
+                <div>
+                    <mat-icon class="logout-icon" svgIcon="feather:logout"></mat-icon>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header">
+        <div class="hospital">{{hospitalName}}</div>
+        <div class="header-icons">
+            <mat-icon class="icon" svgIcon="feather:profile"></mat-icon>
+            <mat-icon class="icon" svgIcon="feather:settings"></mat-icon>
+        </div>
+    </div>
+    <!-- Content Section -->
+    <div class="content" >
+        <router-outlet ></router-outlet>
+    </div>
+</div>

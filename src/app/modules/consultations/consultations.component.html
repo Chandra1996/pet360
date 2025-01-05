@@ -1,0 +1,55 @@
+<div class="consultations-container">
+    <!-- Heading Section -->
+    <div class="header">
+        <p class="header-text">Consultations</p>
+        <button class="schedule-btn" (click)="onScheduleNow()">Schedule now</button>
+    </div>
+
+    <div class="table-container-parent">
+        <!-- Tabs Section -->
+        <div class="tabs">
+            <div class="tab" [class.active]="activeTab === 'active'" (click)="setActiveTab('active')">
+                Active
+            </div>
+            <div class="tab" [class.active]="activeTab === 'completed'" (click)="setActiveTab('completed')">
+                Completed
+            </div>
+        </div>
+
+        <!-- Active Consultations Table -->
+        <div class="table-container">
+            <div class="con-numbers-conatiner">
+                <span class="con-numbers">{{ consultations.length }} {{activeTab}} consultations</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time Slot</th>
+                        <th>Pet Info</th>
+                        <th>Pet Parent</th>
+                        <th>Doctor</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="consultations.length">
+                    <tr *ngFor="let consultation of consultations">
+                        <td>{{ consultation?.timeSlot }}<br /><span class="token">{{ consultation?.token }}</span></td>
+                        <td>{{ consultation?.petName }}<br /><span class="sub-info">{{ consultation?.petInfo }}</span>
+                        </td>
+                        <td>{{ consultation?.petParent }}<br /><span class="sub-info">{{ consultation?.contact }}</span>
+                        </td>
+                        <td>{{ consultation?.doctor }}<br /><span class="sub-info">{{ consultation?.type }}</span></td>
+                        <td><span class="status" [ngClass]="consultation?.statusClass">{{ consultation?.status }}</span>
+                        </td>
+                    </tr>
+                </tbody>
+
+                <tbody *ngIf="!consultations.length">
+                    <div class="no-numbers-conatiner">
+                        <span class="con-numbers">No {{activeTab}} consultations</span>
+                    </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

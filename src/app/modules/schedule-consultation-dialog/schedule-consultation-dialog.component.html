@@ -1,0 +1,142 @@
+<div class="dialog-container" style="display: none;">
+    <div class="dialog-header">
+        <span>Schedule appointment</span>
+        <div class="close-btn">
+            <mat-icon (click)="closeDialog()" class="icon" svgIcon="feather:cross"></mat-icon>
+        </div>
+    </div>
+
+    <form>
+        <!-- First Row -->
+        <div class="form-group">
+            <label for="pet-parent">Pet Parent</label>
+            <input type="text" id="pet-parent" placeholder="eg. Ellen Miller" required>
+        </div>
+        <div class="form-group">
+            <label for="pet">Pet</label>
+            <input type="text" id="pet" placeholder="eg. Milo" required>
+        </div>
+
+        <!-- Second Row -->
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
+        </div>
+        <div class="form-group">
+            <label for="time">Time</label>
+            <input type="time" id="time" required>
+        </div>
+
+        <!-- Third Row -->
+        <div class="form-group">
+            <label for="doctor">Doctor</label>
+            <select id="doctor" required>
+                <option value="" disabled selected>eg. Dr. Ellen Miller</option>
+                <option value="dr1">Dr. Jess Harris</option>
+                <option value="dr2">Dr. K.C Cibran</option>
+                <option value="dr3">Dr. Morgan Long</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="purpose">Purpose of Visit</label>
+            <input type="text" id="purpose" placeholder="eg. Check up" required>
+        </div>
+
+        <!-- Fourth Row (Full Width) -->
+        <div class="form-group full-width">
+            <label for="complaint">Primary Complaint (Optional)</label>
+            <textarea id="complaint" rows="3" placeholder="Type here..."></textarea>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+            <button type="button" class="cancel-btn">Cancel</button>
+            <button type="submit" class="submit-btn">Schedule Now</button>
+        </div>
+    </form>
+</div>
+
+
+<div class="dialog-container">
+    <div class="dialog-header">
+        <span>Schedule appointment</span>
+        <div class="close-btn" (click)="closeDialog()">
+            <mat-icon class="icon" svgIcon="feather:cross"></mat-icon>
+        </div>
+    </div>
+
+    <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+        <!-- First Row -->
+        <div class="form-group">
+            <label for="pet-parent">Pet Parent</label>
+            <input type="text" id="pet-parent" placeholder="eg. Ellen Miller" formControlName="petParent"
+                [ngClass]="{'error-border': isInvalid('petParent')}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="petName">Pet</label>
+            <input type="text" id="petName" placeholder="eg. Milo" formControlName="petName"
+                [ngClass]="{'error-border': isInvalid('petName')}" required>
+        </div>
+
+        <!-- Second Row -->
+
+        <div class="form-group custom-date-wrapper">
+            <label for="date">Date</label>
+
+            <!-- Input with custom calendar icon -->
+            <input class="date-input" matInput [matDatepicker]="picker" id="date" placeholder="Select date"
+                formControlName="date" [ngClass]="{'error-border': isInvalid('date')}" required>
+
+            <!-- Custom Calendar Icon as a button -->
+            <mat-datepicker-toggle [for]="picker" matSuffix>
+                <mat-icon matDatepickerToggleIcon class="custom-date-icon" svgIcon="feather:calender"></mat-icon>
+            </mat-datepicker-toggle>
+
+            <!-- Datepicker Component -->
+            <mat-datepicker #picker></mat-datepicker>
+        </div>
+
+        <div class="form-group custom-time-wrapper">
+            <label for="time">Time</label>
+            <input matInput [ngxMatTimepicker]="timePicker" id="timeSlot" placeholder="Select time" formControlName="timeSlot"
+                [ngClass]="{'error-border': isInvalid('timeSlot')}" required readonly>
+            <ngx-mat-timepicker-toggle [for]="timePicker" matSuffix>
+                <mat-icon ngxMatTimepickerToggleIcon class="custom-time-icon" svgIcon="feather:clock"></mat-icon>
+            </ngx-mat-timepicker-toggle>
+            <ngx-mat-timepicker #timePicker></ngx-mat-timepicker>
+        </div>
+
+        <!-- Third Row -->
+
+        <div class="form-group select-conatiner" >
+            <label for="doctor">Doctor</label>
+
+            <mat-select class="select" id="doctor" formControlName="doctor" [ngClass]="{'error-border': isInvalid('doctor')}" required>
+                <mat-option class="selected-text" value="" disabled selected>Select Doctor</mat-option>
+                <mat-option *ngFor="let doctor of doctors" [value]="doctor">{{ doctor }}</mat-option>
+            </mat-select>
+
+        </div>
+        <div class="form-group select-conatiner" >
+            <label for="doctor">Purpose of Visit</label>
+
+            <mat-select class="select" id="type" formControlName="type" [ngClass]="{'error-border': isInvalid('type')}" required>
+                <mat-option class="selected-text" value="" disabled selected>Select Purpose</mat-option>
+                <mat-option *ngFor="let purpose of petVisitPurposes" [value]="purpose">{{ purpose }}</mat-option>
+            </mat-select>
+        </div>
+
+        <!-- Fourth Row (Full Width) -->
+        <div class="form-group full-width">
+            <label for="complaint">Primary Complaint (Optional)</label>
+            <textarea id="complaint" rows="3" formControlName="primaryComplaint" placeholder="Type here..."
+                [ngClass]="{'error-border': isInvalid('primaryComplaint')}"></textarea>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+            <button type="submit" class="submit-btn">Schedule Now</button>
+        </div>
+    </form>
+</div>
